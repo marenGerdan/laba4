@@ -28,7 +28,7 @@ def find_subsequences(sequence, M, greater_than_2M_indices):
     for right in range(2 * n):
         current_sum += sequence[right % n]
 
-        if current_sum > 2 * M:
+        if current_sum > 2 * M or (right - left + 1) > n:
             current_sum -= sequence[left % n]
             if left % n in greater_than_2M_indices:
                 greater_than_2M_indices.remove(left % n)
@@ -44,12 +44,19 @@ def find_subsequences(sequence, M, greater_than_2M_indices):
     return max_length_subsequences, max_length
 
 
+def print_program_info():
+    """
+    Виводить інформацію про автора програми та її варіант.
+    """
+    print("The author of this program is Kukhelna Oleksandra.")
+    print("Variant 117. This program searches for subsequences with the maximum sum in the range.")
+
+
 def main():
     """
     Monitors program flow, processes user input and output, and manages possible errors.
     """
-    print("The author of this program is Kukhelna Oleksandra.")
-    print("Variant 117. This program searches for subsequences with the maximum sum in the range.")
+    print_program_info()
     print("Початок роботи програми.")
     try:
         M = int(input("Введіть значення M: "))
